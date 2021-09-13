@@ -1,0 +1,404 @@
+/* ----------------------------- Global Styles ------------------------------- */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #fffaf5;
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  color: #403b37;
+}
+
+p {
+  line-height: 1.45;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ----------------------------- Hero ------------------------------- */
+
+.hero {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero__left {
+  flex: 0.08;
+  position: relative;
+  width: 100%;
+}
+
+.hero__accent {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 135%;
+  height: auto;
+}
+
+.hero__middle {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 0.37;
+}
+
+.hero__title {
+  width: 80%;
+  height: auto;
+  padding-bottom: 2em;
+}
+
+.hero__subtitle {
+  padding-bottom: 2em;
+  font-weight: 400;
+  font-size: 1.7em;
+}
+
+.hero__cta {
+  margin-bottom: 2em;
+  padding: 0.5em 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #cd7a3f;
+  border: 3px solid #cd7a3f;
+  border-radius: 100vw;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.hero__cta:hover {
+  color: white;
+  background: #cd7a3f;
+}
+
+.hero__right {
+  flex: 0.55;
+  background-image: url("");
+  background-size: cover;
+  background-position-y: center;
+}
+
+/* ----------------------------- Nav ------------------------------- */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+  box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.048);
+  text-decoration: none;
+  position: sticky;
+  top: 0;
+  background: #fffaf5;
+  z-index: 100;
+}
+
+.nav > * {
+  margin: 0 0.5em;
+}
+
+.nav__logo {
+  flex: 1;
+}
+
+.nav > a:visited,
+.nav > a:active {
+  color: #403b37;
+}
+
+/* ----------------------------- Travel ------------------------------- */
+
+.travel {
+  margin: 3em 24px 0em 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.travel__title {
+  display: flex;
+  font-size: 2em;
+  flex-direction: column;
+  border-bottom: 3px solid #cd7a3f;
+  width: fit-content;
+  padding-top: 2.8em;
+  padding-bottom: 0.05em;
+  margin-bottom: 0.5em;
+}
+
+.travel__subtitle {
+  margin-bottom: 4em;
+  max-width: 800px;
+}
+
+.travelCardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.travelCard {
+  display: flex;
+  flex: 1;
+  background: #77532f10;
+  margin-bottom: 2em;
+  border-radius: 1em;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.103);
+  width: 800px;
+  max-width: 100%;
+}
+
+.travelCard__img {
+  flex: 0.7;
+  background-image: url("./images/hotel-indigo.jpeg");
+  background-size: cover;
+  background-position-y: bottom;
+  min-width: 300px;
+}
+
+.travelCard:last-child .travelCard__img {
+  background-image: url("./images/hilton.jpg") !important;
+}
+
+.travelCard:last-child {
+  margin-bottom: 0;
+}
+
+.travelCard__info {
+  flex: 0.3;
+  padding: 1em 2em 2em 2em;
+}
+
+.travelCard__subtitle {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  margin-bottom: 1em;
+}
+
+.travelCard__title {
+  font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.travelCard__title::after {
+  content: " ";
+  padding-top: 0.06em;
+  border-bottom: 2px solid #cd7a3f;
+  width: 100%;
+  transform: translateX(-105%);
+  transition: transform 300ms;
+}
+
+.travelCard:hover .travelCard__title::after {
+  transform: translateX(0%);
+}
+
+.travelCard__address,
+.travelCard__phone {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3em;
+}
+
+.travelCard__phone {
+  margin-bottom: 1em !important;
+}
+
+.travelCard__icon {
+  width: 24px;
+  height: auto;
+  margin-right: 0.5em;
+}
+
+.travelCard__text {
+  font-size: 0.8em;
+}
+
+.travelCard__cta {
+  color: #cd7a3f;
+  border: 2px solid #cd7a3f;
+  border-radius: 100vh;
+  padding: 0.5em 1em;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.travelCard__cta:hover {
+  color: white;
+  background: #cd7a3f;
+}
+
+/* ----------------------------- Registry ------------------------------- */
+
+.registry {
+  margin: 3em 24px 3em 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.registry__title {
+  display: flex;
+  font-size: 2em;
+  flex-direction: column;
+  border-bottom: 3px solid #cd7a3f;
+  width: fit-content;
+  padding-top: 2.8em;
+  padding-bottom: 0.16em;
+  margin-bottom: 0.5em;
+}
+
+.card:hover .card__title::after {
+  transform: translateX(0%);
+}
+
+.registry__subtitle {
+  margin-bottom: 4em;
+  max-width: 800px;
+}
+
+.registry__card-container {
+  display: flex;
+  width: 800px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #77532f10;
+  padding: 2em 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 1em;
+  border-radius: 1em;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+  box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.103);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: -15px;
+  background-image: url("./images/stripes.svg");
+  background-size: cover;
+  background-position-y: bottom;
+  width: 3em;
+  height: 8em;
+  opacity: 0;
+  transform: translateY(8%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.card:hover::after {
+  opacity: 0.95;
+  transform: translateX(0);
+}
+
+.card:last-child {
+  margin-right: 0 !important;
+}
+
+.card__title {
+  font-weight: 600;
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card__title::after {
+  content: " ";
+  padding-top: 0.06em;
+  border-bottom: 2px solid #cd7a3f;
+  width: 100%;
+  transform: translateX(-105%);
+  transition: transform 300ms;
+}
+
+.card__cta {
+  color: #cd7a3f;
+  border: 2px solid #cd7a3f;
+  border-radius: 100vh;
+  padding: 0.5em 1em;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.card__cta:hover {
+  color: white;
+  background: #cd7a3f;
+}
+
+/* ----------------------------- RSVP ------------------------------- */
+
+.rsvp {
+  margin: 3em 24px 3em 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.rsvp__title {
+  display: flex;
+  font-size: 2em;
+  flex-direction: column;
+  border-bottom: 3px solid #cd7a3f;
+  width: fit-content;
+  padding-top: 2.8em;
+  padding-bottom: 0.16em;
+  margin-bottom: 0.5em;
+}
+
+.rsvp__subtitle {
+  margin-bottom: 4em;
+  max-width: 800px;
+}
