@@ -33,104 +33,159 @@ a {
   text-decoration: none;
 }
 
+a:any-link {
+  color: inherit;
+}
 /* ----------------------------- Hero ------------------------------- */
 
 .hero {
   display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-.hero__left {
-  flex: 0.08;
-  position: relative;
-  width: 100%;
-}
-
-.hero__accent {
-  position: absolute;
-  top: 50px;
-  right: 0;
-  width: 135%;
-  height: auto;
-}
-
-.hero__middle {
-  text-align: center;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  flex: 0.37;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("./images/hero3.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-.hero__title {
-  width: 80%;
-  height: auto;
-  padding-bottom: 2em;
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #332615;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+}
+
+.hero__title,
+.hero__subtitle {
+  width: fit-content;
+  position: relative;
+  z-index: 100;
+  text-align: center;
+}
+
+.visually-hidden {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(
+    1px 1px 1px 1px
+  ); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(
+    1px,
+    1px,
+    1px,
+    1px
+  ); /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(
+    50%
+  ); /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}
+
+.hero__title svg {
+  fill: #fffaf5;
+  margin: 0 1em 1.6em 1em;
+  width: 80vw;
+  max-width: 500px;
+  height: fit-content;
 }
 
 .hero__subtitle {
-  padding-bottom: 2em;
-  font-weight: 400;
-  font-size: 1.7em;
-}
-
-.hero__cta {
-  margin-bottom: 2em;
-  padding: 0.5em 1em;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fffaf5;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #cd7a3f;
-  border: 3px solid #cd7a3f;
-  border-radius: 100vw;
-  height: fit-content;
-  cursor: pointer;
+  letter-spacing: 0.2em;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.199);
+  margin: 0 1em 0.25em 1em;
 }
 
-.hero__cta:hover {
-  color: white;
-  background: #cd7a3f;
+.hero__subtitle:last-child {
+  font-weight: 300;
 }
 
-.hero__right {
-  flex: 0.55;
-  background-image: url("");
-  background-size: cover;
-  background-position-y: center;
+@media screen and (min-width: 800px) {
+  .hero {
+    max-height: 800px;
+  }
+
+  .hero__title svg {
+    max-width: 800px;
+  }
+
+  .hero__subtitle {
+    font-size: 1.7em;
+  }
 }
 
 /* ----------------------------- Nav ------------------------------- */
 
 .nav {
   display: flex;
-  justify-content: space-between;
-  padding: 1em 2em;
-  box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.048);
+  justify-content: center;
+  align-items: center;
+  padding: 1.3em 2.3em 1.5em 2.3em;
   text-decoration: none;
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
-  background: #fffaf5;
-  z-index: 100;
+  z-index: 400;
+  transition: background-color 200ms;
+  background-color: transparent;
+  color: #fffaf5;
+}
+
+.nav--scroll {
+  background-color: #fffaf5;
+  color: #333;
+  box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.048);
 }
 
 .nav > * {
   margin: 0 0.5em;
 }
 
-.nav__logo {
-  flex: 1;
+.nav a {
+  font-size: 1.1rem;
+  display: block;
 }
 
-.nav > a:visited,
-.nav > a:active {
-  color: #403b37;
+.nav a:first-child {
+  display: none;
 }
 
-/* ----------------------------- Travel ------------------------------- */
+@media screen and (min-width: 800px) {
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.travel {
-  margin: 3em 24px 0em 24px;
+  .nav a {
+    display: block;
+  }
+
+  .nav a:first-child {
+    display: block;
+    flex: 1;
+  }
+}
+
+/* ----------------------------- Sections ------------------------------- */
+
+.section {
+  margin: 3em 24px 5em 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -138,21 +193,33 @@ a {
   text-align: center;
 }
 
-.travel__title {
+.title {
   display: flex;
   font-size: 2em;
   flex-direction: column;
   border-bottom: 3px solid #cd7a3f;
   width: fit-content;
-  padding-top: 2.8em;
   padding-bottom: 0.05em;
   margin-bottom: 0.5em;
 }
 
-.travel__subtitle {
+.subtitle {
   margin-bottom: 4em;
-  max-width: 800px;
 }
+
+@media screen and (min-width: 800px) {
+  .subtitle {
+    max-width: 800px;
+  }
+}
+
+/* ----------------------------- Details ------------------------------- */
+
+iframe {
+  width: 100%;
+}
+
+/* ----------------------------- Travel ------------------------------- */
 
 .travelCardContainer {
   display: flex;
@@ -164,7 +231,7 @@ a {
 
 .travelCard {
   display: flex;
-  flex: 1;
+  flex-direction: column;
   background: #77532f10;
   margin-bottom: 2em;
   border-radius: 1em;
@@ -176,11 +243,11 @@ a {
 }
 
 .travelCard__img {
-  flex: 0.7;
   background-image: url("./images/hotel-indigo.jpeg");
   background-size: cover;
   background-position-y: bottom;
   min-width: 300px;
+  min-height: 180px;
 }
 
 .travelCard:last-child .travelCard__img {
@@ -188,11 +255,10 @@ a {
 }
 
 .travelCard:last-child {
-  margin-bottom: 0;
+  margin-bottom: 5em;
 }
 
 .travelCard__info {
-  flex: 0.3;
   padding: 1em 2em 2em 2em;
 }
 
@@ -263,40 +329,29 @@ a {
   background: #cd7a3f;
 }
 
+@media screen and (min-width: 640px) {
+  .travelCard {
+    flex-direction: row;
+  }
+
+  .travelCard__info {
+    flex: 0.3;
+  }
+
+  .travelCard__img {
+    flex: 0.7;
+  }
+}
+
 /* ----------------------------- Registry ------------------------------- */
-
-.registry {
-  margin: 3em 24px 3em 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.registry__title {
-  display: flex;
-  font-size: 2em;
-  flex-direction: column;
-  border-bottom: 3px solid #cd7a3f;
-  width: fit-content;
-  padding-top: 2.8em;
-  padding-bottom: 0.16em;
-  margin-bottom: 0.5em;
-}
 
 .card:hover .card__title::after {
   transform: translateX(0%);
 }
 
-.registry__subtitle {
-  margin-bottom: 4em;
-  max-width: 800px;
-}
-
 .registry__card-container {
   display: flex;
-  width: 800px;
+  flex-direction: column;
   max-width: 100%;
   justify-content: center;
   align-items: center;
@@ -310,12 +365,14 @@ a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-right: 1em;
+  margin: 0 0 1em 0;
   border-radius: 1em;
   overflow: hidden;
   position: relative;
   flex: 1;
   box-shadow: 0px 2px 2px rgba(45, 38, 61, 0.103);
+  width: 800px;
+  max-width: 100%;
 }
 
 .card::after {
@@ -339,7 +396,7 @@ a {
 }
 
 .card:last-child {
-  margin-right: 0 !important;
+  margin: 0;
 }
 
 .card__title {
@@ -376,29 +433,15 @@ a {
   background: #cd7a3f;
 }
 
+@media screen and (min-width: 770px) {
+  .registry__card-container {
+    flex-direction: row;
+    max-width: 800px;
+  }
+
+  .card {
+    margin: 0 1em 0 0;
+  }
+}
+
 /* ----------------------------- RSVP ------------------------------- */
-
-.rsvp {
-  margin: 3em 24px 3em 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.rsvp__title {
-  display: flex;
-  font-size: 2em;
-  flex-direction: column;
-  border-bottom: 3px solid #cd7a3f;
-  width: fit-content;
-  padding-top: 2.8em;
-  padding-bottom: 0.16em;
-  margin-bottom: 0.5em;
-}
-
-.rsvp__subtitle {
-  margin-bottom: 4em;
-  max-width: 800px;
-}
