@@ -455,3 +455,10 @@ iframe {
   text-align: left;
   padding: 0.5em 0;
 }
+
+@media screen and (min-width: 770px) {
+  #FAQ {
+    max-width: 800px;
+    margin: 0 auto 4em auto;
+  }
+}
